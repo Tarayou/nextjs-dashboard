@@ -12,7 +12,8 @@ import { formatCurrency } from './utils';
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
 export async function fetchRevenue() {
-  return [];
+  const data = await sql<Revenue[]>`SELECT * FROM revenue`;
+  return data;
 }
 
 export async function fetchLatestInvoices() {
